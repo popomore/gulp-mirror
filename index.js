@@ -2,6 +2,8 @@
 
 var through = require('through2');
 var duplexer = require('duplexer2');
+var File = require('vinyl');
+var clone = require('clone');
 
 module.exports = function() {
   var output = through.obj();
@@ -16,8 +18,7 @@ module.exports = function() {
 
   var mirror = through.obj(function transform(file, enc, cb) {
     streams.forEach(function(stream) {
-      // TODO: should clone
-      stream.write(file);
+      stream.write(cloneObj(file));
     });
     cb();
   }, function flush(cb) {
@@ -29,3 +30,13 @@ module.exports = function() {
 
   return duplexer(mirror, output);
 };
+
+function cloneObj(obj) {
+  if (obj instanceof File) {
+    var file = obj.clone();
+    obj.originPath && (file.originPath = obj.originPath);
+    return file;
+  }
+
+  return clone(obj);
+}

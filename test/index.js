@@ -2,6 +2,7 @@
 
 var should = require('should');
 var through = require('through2');
+var File = require('vinyl');
 var mirror = require('..');
 
 describe('gulp-mirror', function() {
@@ -43,5 +44,77 @@ describe('gulp-mirror', function() {
 
     stream.write(1);
     stream.end();
+  });
+
+  describe('file clone', function() {
+
+    function testClone(writeCode, cb) {
+      var streamA = through.obj();
+      var streamB = through.obj();
+
+      var ret = [];
+      var stream = mirror(streamA, streamB)
+      .on('data', function(data) {
+        ret.push(data);
+      })
+      .on('end', function() {
+        cb(ret);
+      });
+
+      stream.write(writeCode);
+      stream.end();
+    }
+
+    it('should equal number', function(done) {
+      testClone(1, function(ret) {
+        ret[0].should.equal(ret[1]);
+        done();
+      });
+    });
+
+    it('should equal array', function(done) {
+      testClone([1, 2], function(ret) {
+        ret[0].should.not.equal(ret[1]);
+        ret[0].should.eql(ret[1]);
+        done();
+      });
+    });
+
+    it('should equal object', function(done) {
+      testClone({a: 1}, function(ret) {
+        ret[0].should.not.equal(ret[1]);
+        ret[0].should.eql(ret[1]);
+        done();
+      });
+    });
+
+    it('should equal buffer', function(done) {
+      testClone(new Buffer('abc'), function(ret) {
+        ret[0].should.not.equal(ret[1]);
+        ret[0].toString().should.eql(ret[1].toString());
+        done();
+      });
+    });
+
+    it('should equal vinyl', function(done) {
+      var file = new File({
+        path: 'a.js',
+        cwd: __dirname,
+        base: __dirname,
+        contents: new Buffer('abc')
+      });
+      file.originPath = file.path;
+
+      testClone(file, function(ret) {
+        ret[0].should.not.equal(ret[1]);
+        ret[0].contents.should.not.equal(ret[1].contents);
+        ret[0].contents.toString().should.equal(ret[1].contents.toString());
+        ret[0].path.should.equal(ret[1].path);
+        ret[0].cwd.should.equal(ret[1].cwd);
+        ret[0].base.should.equal(ret[1].base);
+        ret[0].originPath.should.equal(ret[1].originPath);
+        done();
+      });
+    });
   });
 });
