@@ -46,6 +46,34 @@ describe('gulp-mirror', function() {
     stream.end();
   });
 
+  it('should end after all stream are end', function(done) {
+    var streamNormal = through.obj(function(buf, enc, cb) {
+      cb(null, buf + 1);
+    });
+
+    var streamSlow = through.obj(function(buf, enc, cb) {
+      setTimeout(function() {
+        cb(null, buf - 1);
+      }, 1000);
+    });
+
+    var ret = [];
+    var stream = mirror(streamNormal, streamSlow)
+    .on('data', function(data) {
+      ret.push(data);
+    })
+    .on('error', function(e) {
+      should.not.exist(e);
+    })
+    .on('end', function() {
+      ret.should.eql([2, 0]);
+      done();
+    });
+
+    stream.write(1);
+    stream.end();
+  });
+
   describe('file clone', function() {
 
     function testClone(writeCode, cb) {

@@ -6,6 +6,7 @@
   "dependencies": {
     "clone": "~0.1.17",
     "duplexer2": "~0.0.2",
+    "pedding": "~1.0.0",
     "through2": "~0.5.1",
     "vinyl": "~0.2.3"
   },

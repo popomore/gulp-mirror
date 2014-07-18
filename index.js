@@ -4,16 +4,18 @@ var through = require('through2');
 var duplexer = require('duplexer2');
 var File = require('vinyl');
 var clone = require('clone');
+var pedding = require('pedding');
 
 module.exports = function() {
   var output = through.obj();
 
   var streams = Array.prototype.slice.call(arguments);
+  var onEnd = pedding(streams.length, output.end.bind(output));
   streams.forEach(function(stream) {
     stream.on('error', function(err) {
       output.emit('error', err);
-    });
-    stream.pipe(output);
+    }).on('end', onEnd);
+    stream.pipe(output, {end: false});
   });
 
   var mirror = through.obj(function transform(file, enc, cb) {

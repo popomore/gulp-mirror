@@ -2,6 +2,10 @@
 
 ---
 
+## 0.2.1
+
+mirror should end after all stream are end
+
 ## 0.2.0
 
 data should be cloned
