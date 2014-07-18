@@ -1,6 +1,6 @@
 {
   "name": "gulp-mirror",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Make a mirror of stream, it's useful that do different transform of the same stream.",
   "main": "index",
   "dependencies": {
