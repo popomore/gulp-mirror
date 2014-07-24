@@ -2,6 +2,11 @@
 
 ---
 
+## 0.3.0
+
+- if mirror has no argument, it just returns a passthrough stream.
+- if mirror has only one argument, it will create another passthrough stream.
+
 ## 0.2.1
 
 mirror should end after all stream are end

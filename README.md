@@ -25,6 +25,8 @@ gulp.src('src')
 
 MirrorStream will pipe to both of streamA and streamB, and dest will receive both too. streamA and streamB can be transformed as you like.
 
+**if mirror has only one argument, it will create another passthrough stream, just like clone.**
+
 ## LISENCE
 
 Copyright (c) 2014 popomore. Licensed under the MIT license.

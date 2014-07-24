@@ -8,8 +8,18 @@ var pedding = require('pedding');
 
 module.exports = function() {
   var output = through.obj();
-
   var streams = Array.prototype.slice.call(arguments);
+
+  // if no stream, just return a passthrough stream
+  if (streams.length === 0) {
+    return output;
+  }
+
+  // if only one stream, it will create a passthrough stream
+  if (streams.length === 1) {
+    streams.push(through.obj());
+  }
+
   var onEnd = pedding(streams.length, output.end.bind(output));
   streams.forEach(function(stream) {
     stream.on('error', function(err) {

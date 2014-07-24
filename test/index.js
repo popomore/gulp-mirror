@@ -74,6 +74,44 @@ describe('gulp-mirror', function() {
     stream.end();
   });
 
+  it('should be passthrough stream when no argument', function(done) {
+    var ret = [], stream = mirror()
+    .on('data', function(data) {
+      ret.push(data);
+    })
+    .on('error', function(e) {
+      should.not.exist(e);
+    })
+    .on('end', function() {
+      ret.should.eql([1]);
+      done();
+    });
+
+    stream.write(1);
+    stream.end();
+  });
+
+  it('should create a passthrough stream when only one stream', function(done) {
+    var streamNormal = through.obj(function(buf, enc, cb) {
+      cb(null, buf + 1);
+    });
+
+    var ret = [], stream = mirror(streamNormal)
+    .on('data', function(data) {
+      ret.push(data);
+    })
+    .on('error', function(e) {
+      should.not.exist(e);
+    })
+    .on('end', function() {
+      ret.should.eql([2, 1]);
+      done();
+    });
+
+    stream.write(1);
+    stream.end();
+  });
+
   describe('file clone', function() {
 
     function testClone(writeCode, cb) {
