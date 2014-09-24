@@ -2,6 +2,10 @@
 
 ---
 
+## 0.3.1
+
+upgrade dependencies
+
 ## 0.3.0
 
 - if mirror has no argument, it just returns a passthrough stream.
