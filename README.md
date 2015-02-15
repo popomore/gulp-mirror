@@ -67,6 +67,6 @@ src --> sharedStream1    -->  stream2 -->
 
 **if mirror has only one argument, it will create another passthrough stream, just like [gulp-clone](https://github.com/mariocasciaro/gulp-clone)**, See [example 3](https://github.com/popomore/gulp-mirror/tree/master/example).
 
-## LISENCE
+## LICENSE
 
-Copyright (c) 2014 popomore. Licensed under the MIT license.
+Copyright (c) 2015 popomore. Licensed under the MIT license.
