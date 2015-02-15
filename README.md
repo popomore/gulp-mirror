@@ -1,8 +1,13 @@
-# gulp-mirror [![Build Status](https://travis-ci.org/popomore/gulp-mirror.png?branch=master)](https://travis-ci.org/popomore/gulp-mirror) [![Coverage Status](https://coveralls.io/repos/popomore/gulp-mirror/badge.png?branch=master)](https://coveralls.io/r/popomore/gulp-mirror?branch=master) 
+# gulp-mirror
 
 Make a mirror of stream, it's useful that do different transform of the same stream.
 
 ---
+
+[![NPM version](https://img.shields.io/npm/v/gulp-mirror.svg?style=flat)](https://npmjs.org/package/gulp-mirror)
+[![Build Status](https://img.shields.io/travis/popomore/gulp-mirror.svg?style=flat)](https://travis-ci.org/popomore/gulp-mirror)
+[![Build Status](https://img.shields.io/coveralls/popomore/gulp-mirror.svg?style=flat)](https://coveralls.io/r/popomore/gulp-mirror)
+[![NPM downloads](http://img.shields.io/npm/dm/gulp-mirror.svg?style=flat)](https://npmjs.org/package/gulp-mirror)
 
 ## Install
 
