@@ -17,7 +17,7 @@ $ npm install gulp-mirror
 
 ## Usage
 
-Real world [example](https://github.com/popomore/gulp-mirror/tree/master/example).
+Real world [example](https://github.com/popomore/gulp-mirror/tree/master/examples).
 
 ```
 var gulp = require('gulp');
@@ -43,7 +43,7 @@ Concat all js files in src directory, then rename it using mirror that will crea
 
 ### mirror(stream1, stream2 ..., streamN)
 
-Pass the input stream to all the mirrored stream with cloned `File` object. The mirrored stream also can be pipeline stream using [multipipe](https://github.com/juliangruber/multipipe), see [example 2](https://github.com/popomore/gulp-mirror/tree/master/example).
+Pass the input stream to all the mirrored stream with cloned `File` object. The mirrored stream also can be pipeline stream using [multipipe](https://github.com/juliangruber/multipipe), see [example 2](https://github.com/popomore/gulp-mirror/tree/master/examples#example-2).
 
 ```
 gulp.src(source)
@@ -70,7 +70,7 @@ src --> sharedStream1    -->  stream2 -->
                            -->  streamN  --> 
 ```
 
-**if mirror has only one argument, it will create another passthrough stream, just like [gulp-clone](https://github.com/mariocasciaro/gulp-clone)**, See [example 3](https://github.com/popomore/gulp-mirror/tree/master/example).
+**if mirror has only one argument, it will create another passthrough stream, just like [gulp-clone](https://github.com/mariocasciaro/gulp-clone)**, See [example 3](https://github.com/popomore/gulp-mirror/tree/master/examples#example-3).
 
 ## LICENSE
 

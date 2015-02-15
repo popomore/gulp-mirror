@@ -11,7 +11,7 @@ $ npm install
 
 ## Example 1
 
-Commander
+Command
 
 ```
 $ gulp mirror1
@@ -41,7 +41,7 @@ Concat all js files in src directory, then rename it using mirror that will crea
 
 ## Example 2
 
-Commander
+Command
 
 ```
 $ gulp mirror2
@@ -76,7 +76,7 @@ Compress browser.js after renaming it, make a pipeline using multipipe.
 
 ## Example 3
 
-Commander
+Command
 
 ```
 $ gulp mirror3
