@@ -1,6 +1,12 @@
-# History
+## 0.4.0 / 2015-02-15
 
----
+- fix: links and typo
+- chore: update badge
+- chore: add autod and upgrade deps
+- chore: add more node version in travis
+- doc: LICENSE typo #1
+- doc: update README #2
+- doc: add examples #2
 
 ## 0.3.1
 
