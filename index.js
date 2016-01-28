@@ -8,7 +8,11 @@ var pedding = require('pedding');
 
 module.exports = function() {
   var output = through.obj();
-  var streams = Array.prototype.slice.call(arguments);
+  if (arguments.length == 1 && Object.prototype.toString.call(arguments[0]) === '[object Array]') {
+    var streams = arguments[0];
+  } else {
+    var streams = Array.prototype.slice.call(arguments);
+  }
 
   // if no stream, just return a passthrough stream
   if (streams.length === 0) {
