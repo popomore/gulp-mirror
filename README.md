@@ -72,6 +72,10 @@ src --> sharedStream1    -->  stream2 -->
 
 **if mirror has only one argument, it will create another passthrough stream, just like [gulp-clone](https://github.com/mariocasciaro/gulp-clone)**, See [example 3](https://github.com/popomore/gulp-mirror/tree/master/examples#example-3).
 
+### mirror([stream1, stream2 ..., streamN])
+
+Sometimes the number of streams is variable, then we can pass to `mirror` an array of streams as unique argument.
+
 ## LICENSE
 
 Copyright (c) 2015 popomore. Licensed under the MIT license.
