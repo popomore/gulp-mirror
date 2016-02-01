@@ -1,3 +1,9 @@
+
+1.0.0 / 2016-02-01
+==================
+
+  * added array arguments
+
 ## 0.4.0 / 2015-02-15
 
 - fix: links and typo
